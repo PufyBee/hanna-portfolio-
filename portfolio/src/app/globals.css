@@ -1,4 +1,5 @@
-/* Bubble animations used on /projects */
+@tailwind utilities; 
+
 @keyframes bubbleFloat {
   0%,
   100% {
