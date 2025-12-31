@@ -1,115 +1,80 @@
-import Image from "next/image";
 import Link from "next/link";
-import Navbar from "@/components/Navbar";
-import { site } from "@/content/site";
 
-export default function HomePage() {
+function BubbleCard({
+  title,
+  subtitle,
+  href,
+}: {
+  title: string;
+  subtitle: string;
+  href: string;
+}) {
   return (
-    <div className="min-h-screen bg-neutral-50 text-neutral-900">
-      <Navbar />
+    <Link href={href} className="group relative grid h-[70vh] w-full place-items-center overflow-hidden">
+      {/* Ambient hover glow */}
+      <div className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100">
+        <div className="absolute left-1/2 top-1/2 h-[540px] w-[540px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-neutral-200/70 blur-3xl" />
+      </div>
 
-      <main className="mx-auto max-w-6xl px-6 py-12 sm:py-16">
-        <div className="grid gap-10 md:grid-cols-12 md:items-center">
-          {/* Headshot */}
-          <div className="md:col-span-5">
-            <div className="relative aspect-[4/5] overflow-hidden rounded-3xl border border-neutral-200 bg-white shadow-sm">
-              <Image
-                src="/headshot.jpg"
-                alt={`${site.name} headshot`}
-                fill
-                className="object-cover"
-                priority
-              />
-            </div>
-          </div>
+      <div className="relative">
+        {/* Pulse rings */}
+        <div className="pointer-events-none absolute inset-0 -m-10 rounded-full border border-neutral-200/80 animate-bubbleRing" />
+        <div className="pointer-events-none absolute inset-0 -m-20 rounded-full border border-neutral-200/50 animate-bubbleRingSlow" />
 
-          {/* Copy */}
-          <div className="md:col-span-7">
-            <p className="text-sm font-medium text-neutral-600">
-              {site.title} · {site.location}
+        {/* Main bubble */}
+        <div className="relative grid h-72 w-72 place-items-center rounded-full border border-neutral-200 bg-white shadow-[0_30px_90px_-55px_rgba(0,0,0,0.45)] transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-[0_40px_120px_-70px_rgba(0,0,0,0.55)]">
+          {/* Subtle sheen */}
+          <div className="pointer-events-none absolute inset-0 rounded-full bg-gradient-to-b from-white via-white to-neutral-100 opacity-70" />
+
+          {/* Floating highlights */}
+          <div className="pointer-events-none absolute -left-10 -top-12 h-32 w-32 rounded-full bg-white/70 blur-2xl animate-bubbleFloat" />
+          <div className="pointer-events-none absolute -right-10 -bottom-12 h-32 w-32 rounded-full bg-white/50 blur-2xl animate-bubbleFloat2" />
+
+          <div className="relative px-10 text-center">
+            <p className="text-xs font-medium tracking-wide text-neutral-500">{subtitle}</p>
+            <h2 className="mt-2 text-xl font-semibold tracking-tight text-neutral-900">{title}</h2>
+
+            <p className="mt-4 inline-flex items-center gap-2 text-sm font-medium text-neutral-700">
+              View case study
+              <span className="transition-transform duration-200 group-hover:translate-x-0.5">→</span>
             </p>
-
-            <h1 className="mt-4 text-4xl font-semibold tracking-tight sm:text-5xl">
-              {site.name}
-            </h1>
-
-            <div className="mt-4 space-y-3 text-base leading-relaxed text-neutral-700">
-              {site.bio.map((line) => (
-                <p key={line}>{line}</p>
-              ))}
-            </div>
-
-            <div className="mt-7 flex flex-wrap gap-3">
-              {/* COOL BUTTON */}
-              <Link
-                href="/projects"
-                className="group relative inline-flex items-center justify-center overflow-hidden rounded-full bg-neutral-900 px-5 py-3 text-sm font-semibold text-white shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md active:translate-y-0 active:scale-[0.98] active:shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-300"
-              >
-                {/* subtle sheen */}
-                <span className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                  <span className="absolute -left-1/2 top-0 h-full w-[200%] -skew-x-12 bg-gradient-to-r from-transparent via-white/10 to-transparent translate-x-[-30%] group-hover:translate-x-[30%] transition-transform duration-700" />
-                </span>
-
-                {/* content */}
-                <span className="relative inline-flex items-center">
-                  View projects
-                  <span className="ml-2 inline-block transition-transform duration-200 group-hover:translate-x-0.5">
-                    →
-                  </span>
-                </span>
-              </Link>
-
-              <a
-                href="/resume.pdf"
-                className="rounded-full border border-neutral-200 bg-white px-5 py-3 text-sm font-semibold text-neutral-900 hover:bg-neutral-50"
-              >
-                Download resume
-              </a>
-
-              <a
-                href={site.links.linkedin}
-                target="_blank"
-                rel="noreferrer"
-                className="rounded-full border border-neutral-200 bg-white px-5 py-3 text-sm font-semibold text-neutral-900 hover:bg-neutral-50"
-              >
-                LinkedIn
-              </a>
-            </div>
-
-            <p className="mt-10 text-sm text-neutral-500">
-              Two selected dashboard projects below.
-            </p>
-
-            <div className="mt-4 grid gap-4 sm:grid-cols-2">
-              {site.projects.map((p) => (
-                <Link
-                  key={p.slug}
-                  href={`/projects/${p.slug}`}
-                  className="group rounded-2xl border border-neutral-200 bg-white p-5 shadow-sm transition hover:shadow-md"
-                >
-                  <p className="text-sm font-medium text-neutral-500">
-                    {p.timeframe}
-                  </p>
-                  <p className="mt-1 text-lg font-semibold text-neutral-900">
-                    {p.title}
-                  </p>
-                  <p className="mt-2 text-sm text-neutral-700">{p.oneLiner}</p>
-                  <p className="mt-4 text-sm font-semibold text-neutral-900">
-                    View project{" "}
-                    <span className="ml-1 inline-block transition group-hover:translate-x-0.5">
-                      →
-                    </span>
-                  </p>
-                </Link>
-              ))}
-            </div>
           </div>
         </div>
-      </main>
+      </div>
+    </Link>
+  );
+}
 
-      <footer className="mx-auto max-w-6xl px-6 pb-10 text-sm text-neutral-500">
-        © {new Date().getFullYear()} {site.name}
-      </footer>
-    </div>
+export default function ProjectsPage() {
+  return (
+    <main className="min-h-screen bg-white text-neutral-900">
+      <div className="mx-auto max-w-6xl px-6 pt-16">
+        <h1 className="text-4xl font-semibold tracking-tight">Selected Projects</h1>
+        <p className="mt-3 max-w-2xl text-neutral-600">
+          Two focused case studies. Clean visuals, clear decisions, and research-informed UI patterns.
+        </p>
+      </div>
+
+      <div className="mx-auto mt-10 max-w-6xl px-6 pb-20">
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+          <div className="rounded-3xl border border-neutral-200 bg-neutral-50">
+            <BubbleCard title="Drone Dashboard" subtitle="Summer 2025" href="/projects/drone-dashboard" />
+          </div>
+
+          <div className="rounded-3xl border border-neutral-200 bg-neutral-50">
+            <BubbleCard title="SFM Dashboard" subtitle="Summer 2025" href="/projects/sfm-dashboard" />
+          </div>
+        </div>
+
+        <div className="mt-10">
+          <Link
+            href="/"
+            className="inline-flex items-center gap-2 rounded-full border border-neutral-200 bg-white px-4 py-2 text-sm font-semibold text-neutral-900 hover:bg-neutral-50"
+          >
+            ← Back home
+          </Link>
+        </div>
+      </div>
+    </main>
   );
 }
