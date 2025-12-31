@@ -74,11 +74,8 @@ export default function ProjectsPage() {
     <main className="min-h-screen bg-white text-neutral-900">
       <div className="mx-auto max-w-6xl px-6 pt-16">
         <h1 className="text-4xl font-semibold tracking-tight">
-          Selected Projects
+          Projects
         </h1>
-        <p className="mt-3 max-w-2xl text-neutral-600">
-          Two focused case studies. Clean visuals, clear decisions, and research-informed UI patterns.
-        </p>
       </div>
 
       <div className="mx-auto mt-10 max-w-6xl px-6 pb-20">
