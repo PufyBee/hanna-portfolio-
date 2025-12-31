@@ -1,80 +1,82 @@
+import Image from "next/image";
 import Link from "next/link";
+import Navbar from "@/components/Navbar";
+import { site } from "@/content/site";
 
-function BubbleCard({
-  title,
-  subtitle,
-  href,
-}: {
-  title: string;
-  subtitle: string;
-  href: string;
-}) {
+export default function HomePage() {
   return (
-    <Link href={href} className="group relative grid h-[70vh] w-full place-items-center overflow-hidden">
-      {/* Ambient hover glow */}
-      <div className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100">
-        <div className="absolute left-1/2 top-1/2 h-[540px] w-[540px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-neutral-200/70 blur-3xl" />
-      </div>
+    <div className="min-h-screen bg-neutral-50 text-neutral-900">
+      <Navbar />
 
-      <div className="relative">
-        {/* Pulse rings */}
-        <div className="pointer-events-none absolute inset-0 -m-10 rounded-full border border-neutral-200/80 animate-bubbleRing" />
-        <div className="pointer-events-none absolute inset-0 -m-20 rounded-full border border-neutral-200/50 animate-bubbleRingSlow" />
+      <main className="mx-auto max-w-6xl px-6 py-16">
+        <div className="grid items-center gap-14 md:grid-cols-12">
+          {/* Headshot */}
+          <div className="md:col-span-5">
+            <div className="relative aspect-[4/5] overflow-hidden rounded-3xl border border-neutral-200 bg-white shadow-sm">
+              <Image
+                src="/headshot.jpg"
+                alt={`${site.name} headshot`}
+                fill
+                priority
+                className="object-cover"
+              />
+            </div>
+          </div>
 
-        {/* Main bubble */}
-        <div className="relative grid h-72 w-72 place-items-center rounded-full border border-neutral-200 bg-white shadow-[0_30px_90px_-55px_rgba(0,0,0,0.45)] transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-[0_40px_120px_-70px_rgba(0,0,0,0.55)]">
-          {/* Subtle sheen */}
-          <div className="pointer-events-none absolute inset-0 rounded-full bg-gradient-to-b from-white via-white to-neutral-100 opacity-70" />
+          {/* Text */}
+          <div className="md:col-span-7">
+            <p className="text-sm font-medium text-neutral-600">
+              {site.title} · {site.location}
+            </p>
 
-          {/* Floating highlights */}
-          <div className="pointer-events-none absolute -left-10 -top-12 h-32 w-32 rounded-full bg-white/70 blur-2xl animate-bubbleFloat" />
-          <div className="pointer-events-none absolute -right-10 -bottom-12 h-32 w-32 rounded-full bg-white/50 blur-2xl animate-bubbleFloat2" />
+            <h1 className="mt-4 text-4xl font-semibold tracking-tight sm:text-5xl">
+              {site.name}
+            </h1>
 
-          <div className="relative px-10 text-center">
-            <p className="text-xs font-medium tracking-wide text-neutral-500">{subtitle}</p>
-            <h2 className="mt-2 text-xl font-semibold tracking-tight text-neutral-900">{title}</h2>
+            <div className="mt-5 space-y-4 text-base leading-relaxed text-neutral-700">
+              {site.bio.map((line) => (
+                <p key={line}>{line}</p>
+              ))}
+            </div>
 
-            <p className="mt-4 inline-flex items-center gap-2 text-sm font-medium text-neutral-700">
-              View case study
-              <span className="transition-transform duration-200 group-hover:translate-x-0.5">→</span>
+            {/* CTAs */}
+            <div className="mt-8 flex flex-wrap gap-3">
+              <Link
+                href="/projects"
+                className="group relative overflow-hidden rounded-full bg-neutral-900 px-6 py-3 text-sm font-semibold text-white"
+              >
+                <span className="relative z-10">View projects</span>
+                <span className="absolute inset-0 -translate-x-full bg-neutral-700 transition-transform duration-300 group-hover:translate-x-0" />
+              </Link>
+
+              <a
+                href="/resume.pdf"
+                className="rounded-full border border-neutral-200 bg-white px-6 py-3 text-sm font-semibold text-neutral-900 hover:bg-neutral-100 transition"
+              >
+                Download resume
+              </a>
+
+              <a
+                href={site.links.linkedin}
+                target="_blank"
+                rel="noreferrer"
+                className="rounded-full border border-neutral-200 bg-white px-6 py-3 text-sm font-semibold text-neutral-900 hover:bg-neutral-100 transition"
+              >
+                LinkedIn
+              </a>
+            </div>
+
+            <p className="mt-10 text-sm text-neutral-500 max-w-md">
+              Selected UX/UI dashboard case studies focused on mission-critical
+              systems and research-driven decisions.
             </p>
           </div>
         </div>
-      </div>
-    </Link>
-  );
-}
+      </main>
 
-export default function ProjectsPage() {
-  return (
-    <main className="min-h-screen bg-white text-neutral-900">
-      <div className="mx-auto max-w-6xl px-6 pt-16">
-        <h1 className="text-4xl font-semibold tracking-tight">Selected Projects</h1>
-        <p className="mt-3 max-w-2xl text-neutral-600">
-          Two focused case studies. Clean visuals, clear decisions, and research-informed UI patterns.
-        </p>
-      </div>
-
-      <div className="mx-auto mt-10 max-w-6xl px-6 pb-20">
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-          <div className="rounded-3xl border border-neutral-200 bg-neutral-50">
-            <BubbleCard title="Drone Dashboard" subtitle="Summer 2025" href="/projects/drone-dashboard" />
-          </div>
-
-          <div className="rounded-3xl border border-neutral-200 bg-neutral-50">
-            <BubbleCard title="SFM Dashboard" subtitle="Summer 2025" href="/projects/sfm-dashboard" />
-          </div>
-        </div>
-
-        <div className="mt-10">
-          <Link
-            href="/"
-            className="inline-flex items-center gap-2 rounded-full border border-neutral-200 bg-white px-4 py-2 text-sm font-semibold text-neutral-900 hover:bg-neutral-50"
-          >
-            ← Back home
-          </Link>
-        </div>
-      </div>
-    </main>
+      <footer className="mx-auto max-w-6xl px-6 pb-10 text-sm text-neutral-500">
+        © {new Date().getFullYear()} {site.name}
+      </footer>
+    </div>
   );
 }
