@@ -1,4 +1,4 @@
-@tailwind utilities; 
+@import "tailwindcss";
 
 @keyframes bubbleFloat {
   0%,
