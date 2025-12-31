@@ -9,7 +9,6 @@ export const site = {
   links: {
     email: "heb0018@uah.edu",
     linkedin: "https://www.linkedin.com/in/hannabarnes",
-    // We’re linking directly to /resume.pdf in Navbar, but keeping this here is fine too:
     resumeUrl: "/resume.pdf"
   },
   projects: [

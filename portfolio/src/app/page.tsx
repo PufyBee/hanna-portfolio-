@@ -40,11 +40,23 @@ export default function HomePage() {
             </div>
 
             <div className="mt-7 flex flex-wrap gap-3">
+              {/* COOL BUTTON */}
               <Link
                 href="/projects"
-                className="rounded-full bg-neutral-900 px-5 py-3 text-sm font-semibold text-white hover:bg-neutral-800"
+                className="group relative inline-flex items-center justify-center overflow-hidden rounded-full bg-neutral-900 px-5 py-3 text-sm font-semibold text-white shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md active:translate-y-0 active:scale-[0.98] active:shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-300"
               >
-                View projects
+                {/* subtle sheen */}
+                <span className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                  <span className="absolute -left-1/2 top-0 h-full w-[200%] -skew-x-12 bg-gradient-to-r from-transparent via-white/10 to-transparent translate-x-[-30%] group-hover:translate-x-[30%] transition-transform duration-700" />
+                </span>
+
+                {/* content */}
+                <span className="relative inline-flex items-center">
+                  View projects
+                  <span className="ml-2 inline-block transition-transform duration-200 group-hover:translate-x-0.5">
+                    →
+                  </span>
+                </span>
               </Link>
 
               <a
@@ -73,13 +85,20 @@ export default function HomePage() {
                 <Link
                   key={p.slug}
                   href={`/projects/${p.slug}`}
-                  className="group rounded-2xl border border-neutral-200 bg-white p-5 shadow-sm hover:shadow-md transition"
+                  className="group rounded-2xl border border-neutral-200 bg-white p-5 shadow-sm transition hover:shadow-md"
                 >
-                  <p className="text-sm font-medium text-neutral-500">{p.timeframe}</p>
-                  <p className="mt-1 text-lg font-semibold text-neutral-900">{p.title}</p>
+                  <p className="text-sm font-medium text-neutral-500">
+                    {p.timeframe}
+                  </p>
+                  <p className="mt-1 text-lg font-semibold text-neutral-900">
+                    {p.title}
+                  </p>
                   <p className="mt-2 text-sm text-neutral-700">{p.oneLiner}</p>
                   <p className="mt-4 text-sm font-semibold text-neutral-900">
-                    View project <span className="ml-1 group-hover:translate-x-0.5 inline-block transition">→</span>
+                    View project{" "}
+                    <span className="ml-1 inline-block transition group-hover:translate-x-0.5">
+                      →
+                    </span>
                   </p>
                 </Link>
               ))}

@@ -1,79 +1,118 @@
-import Image from "next/image";
-import Navbar from "@/components/Navbar";
-import { site } from "@/content/site";
+import Link from "next/link";
 
 export default function DroneDashboardPage() {
-  const p = site.projects.find((x) => x.slug === "drone-dashboard")!;
-
   return (
-    <div className="min-h-screen bg-neutral-50 text-neutral-900">
-      <Navbar />
+    <main className="min-h-screen bg-white text-neutral-900">
+      <div className="mx-auto max-w-6xl px-6 py-14">
+        <div className="flex items-center justify-between gap-6">
+          <div>
+            <p className="text-sm font-medium text-neutral-600">Case Study</p>
+            <h1 className="mt-2 text-4xl font-semibold tracking-tight">
+              Drone Dashboard
+            </h1>
+            <p className="mt-3 max-w-2xl text-neutral-600">
+              UX/UI design for a mission dashboard supporting drone monitoring,
+              mission status, and operational clarity.
+            </p>
+          </div>
 
-      <main className="mx-auto max-w-6xl px-6 py-12">
-        <p className="text-sm font-medium text-neutral-500">
-          {p.role} · {p.timeframe}
-        </p>
-        <h1 className="mt-2 text-3xl font-semibold tracking-tight sm:text-4xl">
-          {p.title}
-        </h1>
-        <p className="mt-4 max-w-3xl text-neutral-700">{p.oneLiner}</p>
-
-        <div className="mt-8 flex flex-wrap gap-3">
-          <a
-            href="/resume.pdf"
-            className="rounded-full border border-neutral-200 bg-white px-5 py-3 text-sm font-semibold hover:bg-neutral-50"
+          <Link
+            href="/projects"
+            className="rounded-full border border-neutral-200 px-4 py-2 text-sm font-semibold text-neutral-900 hover:bg-neutral-50"
           >
-            Resume
-          </a>
-
-          {p.figmaUrl ? (
-            <a
-              href={p.figmaUrl}
-              target="_blank"
-              rel="noreferrer"
-              className="rounded-full bg-neutral-900 px-5 py-3 text-sm font-semibold text-white hover:bg-neutral-800"
-            >
-              View Figma workspace
-            </a>
-          ) : (
-            <span className="rounded-full bg-neutral-900/10 px-5 py-3 text-sm font-semibold text-neutral-700">
-              Figma link (add later)
-            </span>
-          )}
+            Back to projects
+          </Link>
         </div>
 
-        <div className="mt-10 overflow-hidden rounded-3xl border border-neutral-200 bg-white shadow-sm">
-          <div className="relative aspect-[16/9]">
-            <Image src={p.image} alt={`${p.title} screenshot`} fill className="object-cover" />
+        {/* Hero screenshot placeholder */}
+        <div className="mt-10 overflow-hidden rounded-3xl border border-neutral-200 bg-neutral-50">
+          <div className="grid place-items-center px-6 py-24">
+            <div className="text-center">
+              <p className="text-sm font-medium text-neutral-600">
+                Screenshot placeholder
+              </p>
+              <p className="mt-2 text-neutral-500">
+                We’ll drop the hero dashboard image here later.
+              </p>
+            </div>
           </div>
         </div>
 
-        <div className="mt-10 grid gap-8 md:grid-cols-2">
-          <section className="rounded-3xl border border-neutral-200 bg-white p-6 shadow-sm">
-            <h2 className="text-sm font-semibold text-neutral-900">What Hanna owned</h2>
-            <ul className="mt-4 space-y-2 text-sm text-neutral-700">
-              <li>• Visual design system and overall layout</li>
-              <li>• Information hierarchy for status, alerts, and mission context</li>
-              <li>• UI states and consistency across views</li>
-              <li>• Design handoff-ready components (no code)</li>
+        {/* Content blocks */}
+        <div className="mt-14 grid gap-10 md:grid-cols-3">
+          <section className="md:col-span-1">
+            <h2 className="text-lg font-semibold">Role</h2>
+            <p className="mt-2 text-neutral-600">
+              UX/UI Designer — led interface design decisions and iteration.
+            </p>
+
+            <h2 className="mt-8 text-lg font-semibold">Tools</h2>
+            <ul className="mt-2 space-y-2 text-neutral-600">
+              <li>Figma</li>
+              <li>Usability checklist / heuristic evaluation</li>
+              <li>Survey feedback synthesis</li>
             </ul>
           </section>
 
-          <section className="rounded-3xl border border-neutral-200 bg-white p-6 shadow-sm">
-            <h2 className="text-sm font-semibold text-neutral-900">Process</h2>
-            <ul className="mt-4 space-y-2 text-sm text-neutral-700">
-              <li>• Wireframes → iteration → polished screens</li>
-              <li>• Heuristic review using a usability checklist</li>
-              <li>• Feedback synthesis (survey + team input)</li>
-              <li>• Refinement for clarity under time pressure</li>
-            </ul>
+          <section className="md:col-span-2">
+            <h2 className="text-lg font-semibold">Overview</h2>
+            <p className="mt-2 text-neutral-600">
+              This case study will highlight key screens, design rationale, and
+              iterations. Sensitive details can be blurred/redacted as needed.
+            </p>
+
+            <div className="mt-8 grid gap-6 md:grid-cols-2">
+              <div className="rounded-2xl border border-neutral-200 bg-white p-6">
+                <h3 className="font-semibold">Problem</h3>
+                <p className="mt-2 text-neutral-600">
+                  Placeholder: describe what operators needed to see quickly and
+                  why clarity mattered.
+                </p>
+              </div>
+
+              <div className="rounded-2xl border border-neutral-200 bg-white p-6">
+                <h3 className="font-semibold">Design Focus</h3>
+                <p className="mt-2 text-neutral-600">
+                  Placeholder: hierarchy, status readability, alert salience,
+                  and reducing cognitive load.
+                </p>
+              </div>
+
+              <div className="rounded-2xl border border-neutral-200 bg-white p-6">
+                <h3 className="font-semibold">Key Screens</h3>
+                <p className="mt-2 text-neutral-600">
+                  Placeholder: mission overview, map view, alerts, asset status.
+                </p>
+              </div>
+
+              <div className="rounded-2xl border border-neutral-200 bg-white p-6">
+                <h3 className="font-semibold">Outcome</h3>
+                <p className="mt-2 text-neutral-600">
+                  Placeholder: improved readability, clearer states, better
+                  handoff to engineering.
+                </p>
+              </div>
+            </div>
+
+            {/* Gallery placeholders */}
+            <h2 className="mt-12 text-lg font-semibold">Screens (placeholder)</h2>
+            <div className="mt-4 grid gap-4 md:grid-cols-2">
+              <div className="h-56 rounded-2xl border border-neutral-200 bg-neutral-50 grid place-items-center text-neutral-500">
+                Screenshot 1
+              </div>
+              <div className="h-56 rounded-2xl border border-neutral-200 bg-neutral-50 grid place-items-center text-neutral-500">
+                Screenshot 2
+              </div>
+              <div className="h-56 rounded-2xl border border-neutral-200 bg-neutral-50 grid place-items-center text-neutral-500">
+                Screenshot 3
+              </div>
+              <div className="h-56 rounded-2xl border border-neutral-200 bg-neutral-50 grid place-items-center text-neutral-500">
+                Screenshot 4
+              </div>
+            </div>
           </section>
         </div>
-
-        <p className="mt-10 text-sm text-neutral-500">
-          Selected screen shown. Additional views and design decisions available in the design workspace.
-        </p>
-      </main>
-    </div>
+      </div>
+    </main>
   );
 }
