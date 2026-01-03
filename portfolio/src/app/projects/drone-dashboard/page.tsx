@@ -45,7 +45,7 @@ export default function DroneDashboardPage() {
   // HERO VIDEO (replaces hero image)
   const heroVideo = {
     src: `${base}/hero.mp4`,
-    label: "Drone Dashboard — hero video",
+    label: "Drone Dashboard: Mission Ready",
   };
 
   // OPTIONAL extra videos (2)
@@ -56,12 +56,7 @@ export default function DroneDashboardPage() {
       caption: "Drop demo1.mp4 into /public/projects/drone/",
       showControls: true,
     },
-    {
-      src: `${base}/demo2.mp4`,
-      title: "Demo video 2",
-      caption: "Drop demo2.mp4 into /public/projects/drone/",
-      showControls: true,
-    },
+
   ];
 
   // Keep the image gallery too (unchanged)
@@ -94,6 +89,7 @@ export default function DroneDashboardPage() {
             Back to projects
           </Link>
         </div>
+        </div>
 
         {/* HERO VIDEO */}
         <div className="mt-10 overflow-hidden rounded-3xl border border-neutral-200 bg-neutral-50">
@@ -110,10 +106,6 @@ export default function DroneDashboardPage() {
           </div>
           <div className="border-t border-neutral-200 bg-white px-5 py-3">
             <p className="text-sm font-medium text-neutral-700">{heroVideo.label}</p>
-            <p className="mt-1 text-xs text-neutral-500">
-              Put the file at <span className="font-mono">{heroVideo.src}</span>
-            </p>
-          </div>
         </div>
 
         {/* Content blocks */}
