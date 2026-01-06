@@ -7,7 +7,7 @@ export const site = {
     "Worked on a PhD-led team designing dashboard interfaces and iterating from feedback."
   ],
   links: {
-    email: "heb0018@uah.edu",
+    email: "hannabarnes8@gmail.com",
     linkedin: "https://www.linkedin.com/in/hannabarnes",
     resumeUrl: "/resume.pdf"
   },

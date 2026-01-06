@@ -92,7 +92,7 @@ export default function ProjectsPage() {
           <div className="overflow-hidden rounded-3xl border border-neutral-200 bg-neutral-50">
             <BubbleCard
               title="SFM Dashboard"
-              subtitle="Summer 2025"
+              subtitle="Fall 2025"
               href="/projects/sfm-dashboard"
               coverSrc="/projects/sfm/cover.png"
             />

@@ -1,43 +1,4 @@
-import Image from "next/image";
 import Link from "next/link";
-
-type GalleryItem = {
-  src: string;
-  alt: string;
-  caption?: string;
-};
-
-type VideoItem = {
-  src: string;
-  title: string;
-  caption?: string;
-  showControls?: boolean;
-};
-
-function VideoCard({
-  src,
-  title,
-  caption,
-  showControls = true,
-}: VideoItem) {
-  return (
-    <figure className="overflow-hidden rounded-2xl border border-neutral-200 bg-neutral-50">
-      <div className="relative aspect-[16/10] w-full">
-        <video
-          className="h-full w-full object-cover"
-          src={src}
-          controls={showControls}
-          playsInline
-          preload="metadata"
-        />
-      </div>
-      <figcaption className="px-4 py-3">
-        <p className="text-sm font-semibold text-neutral-900">{title}</p>
-        {caption ? <p className="mt-1 text-sm text-neutral-600">{caption}</p> : null}
-      </figcaption>
-    </figure>
-  );
-}
 
 export default function DroneDashboardPage() {
   const base = "/projects/drone";
@@ -47,25 +8,6 @@ export default function DroneDashboardPage() {
     src: `${base}/hero.mp4`,
     label: "Drone Dashboard",
   };
-
-  // OPTIONAL extra videos (2)
-  const videos: VideoItem[] = [
-    {
-      src: `${base}/demo1.mp4`,
-      title: "Demo video 1",
-      caption: "Drop demo1.mp4 into /public/projects/drone/",
-      showControls: true,
-    },
-
-  ];
-
-  // Keep the image gallery too (unchanged)
-  const gallery: GalleryItem[] = [
-    { src: `${base}/img1.png`, alt: "Drone Dashboard screenshot 1" },
-    { src: `${base}/img2.png`, alt: "Drone Dashboard screenshot 2" },
-    { src: `${base}/img3.png`, alt: "Drone Dashboard screenshot 3" },
-    { src: `${base}/img4.png`, alt: "Drone Dashboard screenshot 4" },
-  ];
 
   return (
     <main className="min-h-screen bg-white text-neutral-900">
@@ -104,9 +46,12 @@ export default function DroneDashboardPage() {
             />
           </div>
           <div className="border-t border-neutral-200 bg-white px-5 py-3">
-            <p className="text-sm font-medium text-neutral-700">{heroVideo.label}</p>
+            <p className="text-sm font-medium text-neutral-700">
+              {heroVideo.label}
+            </p>
             <p className="mt-1 text-xs text-neutral-500">
-              Put the file at <span className="font-mono">{heroVideo.src}</span>
+              Put the file at{" "}
+              <span className="font-mono">{heroVideo.src}</span>
             </p>
           </div>
         </div>
@@ -165,39 +110,6 @@ export default function DroneDashboardPage() {
                   handoff to engineering.
                 </p>
               </div>
-            </div>
-
-            {/* Extra videos (2) */}
-            <h2 className="mt-12 text-lg font-semibold">Videos</h2>
-            <div className="mt-4 grid gap-4 md:grid-cols-2">
-              {videos.map((v) => (
-                <VideoCard key={v.src} {...v} />
-              ))}
-            </div>
-
-            {/* Image gallery */}
-            <h2 className="mt-12 text-lg font-semibold">Screens</h2>
-            <div className="mt-4 grid gap-4 md:grid-cols-2">
-              {gallery.map((item) => (
-                <figure
-                  key={item.src}
-                  className="overflow-hidden rounded-2xl border border-neutral-200 bg-neutral-50"
-                >
-                  <div className="relative aspect-[16/10] w-full">
-                    <Image
-                      src={item.src}
-                      alt={item.alt}
-                      fill
-                      className="object-cover"
-                    />
-                  </div>
-                  {item.caption ? (
-                    <figcaption className="px-4 py-3 text-sm text-neutral-600">
-                      {item.caption}
-                    </figcaption>
-                  ) : null}
-                </figure>
-              ))}
             </div>
           </section>
         </div>
