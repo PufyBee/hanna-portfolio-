@@ -81,7 +81,7 @@ export default function SFMDashboardPage() {
               <div className="rounded-2xl border border-neutral-200 bg-white p-6">
                 <h3 className="font-semibold">Problem</h3>
                 <p className="mt-2 text-neutral-600">
-                  Placeholder: describe the operational context and what
+                  Describe the operational context and what
                   “success” looked like for users.
                 </p>
               </div>
@@ -89,7 +89,7 @@ export default function SFMDashboardPage() {
               <div className="rounded-2xl border border-neutral-200 bg-white p-6">
                 <h3 className="font-semibold">Design Focus</h3>
                 <p className="mt-2 text-neutral-600">
-                  Placeholder: readability, consistent states, and fast scanning
+                  Readability, consistent states, and fast scanning
                   for high-priority items.
                 </p>
               </div>
@@ -97,14 +97,14 @@ export default function SFMDashboardPage() {
               <div className="rounded-2xl border border-neutral-200 bg-white p-6">
                 <h3 className="font-semibold">Key Screens</h3>
                 <p className="mt-2 text-neutral-600">
-                  Placeholder: overview, alert views, health panels, tables.
+                 Overview, alert views, health panels, tables.
                 </p>
               </div>
 
               <div className="rounded-2xl border border-neutral-200 bg-white p-6">
                 <h3 className="font-semibold">Outcome</h3>
                 <p className="mt-2 text-neutral-600">
-                  Placeholder: clearer navigation, stronger hierarchy, improved
+                  Clearer navigation, stronger hierarchy, improved
                   component reuse.
                 </p>
               </div>

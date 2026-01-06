@@ -79,7 +79,7 @@ export default function DroneDashboardPage() {
               <div className="rounded-2xl border border-neutral-200 bg-white p-6">
                 <h3 className="font-semibold">Problem</h3>
                 <p className="mt-2 text-neutral-600">
-                  Placeholder: describe what operators needed to see quickly and
+                  Describe what operators needed to see quickly and
                   why clarity mattered.
                 </p>
               </div>
@@ -87,7 +87,7 @@ export default function DroneDashboardPage() {
               <div className="rounded-2xl border border-neutral-200 bg-white p-6">
                 <h3 className="font-semibold">Design Focus</h3>
                 <p className="mt-2 text-neutral-600">
-                  Placeholder: hierarchy, status readability, alert salience,
+                  Hierarchy, status readability, alert salience,
                   and reducing cognitive load.
                 </p>
               </div>
@@ -95,14 +95,14 @@ export default function DroneDashboardPage() {
               <div className="rounded-2xl border border-neutral-200 bg-white p-6">
                 <h3 className="font-semibold">Key Screens</h3>
                 <p className="mt-2 text-neutral-600">
-                  Placeholder: mission overview, map view, alerts, asset status.
+                  Mission overview, map view, alerts, asset status.
                 </p>
               </div>
 
               <div className="rounded-2xl border border-neutral-200 bg-white p-6">
                 <h3 className="font-semibold">Outcome</h3>
                 <p className="mt-2 text-neutral-600">
-                  Placeholder: improved readability, clearer states, better
+                  Improved readability, clearer states, better
                   handoff to engineering.
                 </p>
               </div>
