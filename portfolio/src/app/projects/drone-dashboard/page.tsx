@@ -49,10 +49,6 @@ export default function DroneDashboardPage() {
             <p className="text-sm font-medium text-neutral-700">
               {heroVideo.label}
             </p>
-            <p className="mt-1 text-xs text-neutral-500">
-              Put the file at{" "}
-              <span className="font-mono">{heroVideo.src}</span>
-            </p>
           </div>
         </div>
 
